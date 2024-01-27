@@ -1,23 +1,36 @@
-import css from "./Feedback.module.css"
+import React from 'react';
+import styled from 'styled-components';
+
+const FeedbackList = styled.ul`
+  display: block;
+`;
+
+const Option = styled.li`
+  display: inline;
+  margin-right: 10px;
+`;
+
+const ButtonFeedback = styled.button`
+  background-color: lightpink;
+  border-color: plum;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px lightcoral;
+  width: 100px;
+`;
 
 function Feedback({ options, leaveFeedback }) {
   return (
-    <ul className={css.feedbackList}>
+    <FeedbackList>
       {options.map(option => {
         return (
-          <li key={option} className={css.option}>
-            <button
-              name={option}
-              onClick={leaveFeedback}
-              type="button"
-              className={css.btnFeedback}
-            >
+          <Option key={option}>
+            <ButtonFeedback name={option} onClick={leaveFeedback} type="button">
               {option}
-            </button>
-          </li>
+            </ButtonFeedback>
+          </Option>
         );
       })}
-    </ul>
+    </FeedbackList>
   );
 }
 
